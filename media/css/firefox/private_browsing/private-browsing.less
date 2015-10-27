@@ -148,7 +148,6 @@
     }
     .blurb {
         background: url('/media/img/firefox/private-browsing/sprite-tracking-protection.png') no-repeat;
-        background: linear-gradient(transparent, transparent), url('/media/img/firefox/private-browsing/sprite-tracking-protection.svg');
         background-repeat: no-repeat;
         background-size: 710px;
         background-attachment: scroll;
@@ -201,7 +200,6 @@
        
         p {
             background: url('/media/img/firefox/private-browsing/sprite-features.png');
-            background: linear-gradient(transparent, transparent), url('/media/img/firefox/private-browsing/sprite-features.svg');
             background-size: 743px;
             background-repeat: no-repeat;
             background-position: -500px top;
@@ -219,7 +217,6 @@
 
 .control-center {
     background: url('/media/img/firefox/private-browsing/control-center.png');
-    background: linear-gradient(transparent, transparent), url('/media/img/firefox/private-browsing/control-center.svg');
     background-position: center 90px;
     background-size: 290px;
     background-repeat: no-repeat;
@@ -263,6 +260,7 @@
 }
 
 html[lang^='de'],
+html[lang^='pl'],
 html[lang^='es-ES']{
     h1 {
         .font-size(55px);
@@ -270,8 +268,10 @@ html[lang^='es-ES']{
     .intro header {
         width: 535px;
     }
+    .cta h2 {
+        width: 550px; 
+    }
 }
-
 html[lang^='en'] {
     .button-flat-dark {
         text-transform: none;
@@ -281,12 +281,16 @@ html[lang^='en'] {
 
 @media only screen and (max-width: @breakDesktop) {
     html[lang^='de'],
+    html[lang^='pl'],
     html[lang^='es-ES']{
         h1 {
             .font-size(38px);
         }
         .intro header {
             width: 380px;
+        }
+        .cta h2 {
+            width: 460px; 
         }
     }
     .button-flat-dark {
@@ -368,12 +372,16 @@ html[lang^='en'] {
 
 @media only screen and (max-width: @breakTablet) {
     html[lang^='de'],
+    html[lang^='pl'],
     html[lang^='es-ES']{
         h1 {
             .font-size(30px);
         }
         .intro header {
             width: 100%;
+        }
+        .cta h2 {
+            width: 100%; 
         }
     }
     .button-flat-dark {
@@ -383,7 +391,8 @@ html[lang^='en'] {
         width: @widthMobile;
         padding-top: 60px;
         padding-bottom: 60px;
-          h1 {
+
+        h1 {
             .font-size(32px);
         } 
         h2 {
