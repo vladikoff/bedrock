@@ -2,10 +2,10 @@
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-;(function($, Modernizr, site) {
+;(function($, site) {
     'use strict';
 
-    var $html = $(document.documentElement);
+    var $html = $('html');
     var $shield = $('#tracking-protection-animation');
     var panels = ['tracking-protection', 'when-to-use', 'control-center', 'cta'];
 
@@ -44,4 +44,4 @@
         $html.addClass('non-firefox');
     }
 
-})(window.jQuery, window.Modernizr, window.site);
+})(window.jQuery, window.site);
