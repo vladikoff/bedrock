@@ -132,6 +132,10 @@
         margin: 30px -85px 0 0; 
     }
 
+    #tracking-protection-animation .shield-container {
+        margin: 0 0 0 -25px
+    }
+
     .android & .critter-animation,
     .ios & .critter-animation {
         margin: 30px 0 0 0; 
@@ -202,16 +206,16 @@
             background: url('/media/img/firefox/private-browsing/sprite-features.png');
             background-size: 743px;
             background-repeat: no-repeat;
-            background-position: -500px top;
+            background-position: -490px top;
             margin: 0 auto;
             padding: 165px 30px 0;
         }
     }
     li:first-child p {
-        background-position: 80px top;
+        background-position: 90px top;
     }
     li:first-child + li p {
-        background-position: -190px top;
+        background-position: -180px top;
     }
 }
 
@@ -272,6 +276,13 @@ html[lang^='es-ES']{
         width: 550px; 
     }
 }
+html.ios[lang^='de'],
+html.ios[lang^='pl'],
+html.ios[lang^='es-ES']{
+    .intro header {
+        width: 465px;
+    }
+}
 html[lang^='en'] {
     .button-flat-dark {
         text-transform: none;
@@ -291,6 +302,13 @@ html[lang^='en'] {
         }
         .cta h2 {
             width: 460px; 
+        }
+    }
+    html.ios[lang^='de'],
+    html.ios[lang^='pl'],
+    html.ios[lang^='es-ES']{
+        .intro header {
+            width: 370px;
         }
     }
     html[lang^='pl'] {
@@ -387,6 +405,13 @@ html[lang^='en'] {
         }
         .cta h2 {
             width: 100%; 
+        }
+    }
+    html.ios[lang^='de'],
+    html.ios[lang^='pl'],
+    html.ios[lang^='es-ES']{
+        .intro header {
+            width: 100%;
         }
     }
     html[lang^='pl']{
