@@ -134,7 +134,7 @@
 
     .android & .critter-animation,
     .ios & .critter-animation {
-        margin: 30px -30px 0 0; 
+        margin: 30px 0 0 0; 
     }
 }
 
@@ -284,15 +284,20 @@ html[lang^='en'] {
     html[lang^='pl'],
     html[lang^='es-ES']{
         h1 {
-            .font-size(38px);
+            .font-size(37px);
         }
         .intro header {
-            width: 380px;
+            width: 370px;
         }
         .cta h2 {
             width: 460px; 
         }
     }
+    html[lang^='pl'] {
+         .cta h2 {
+            width: 350px; 
+        }
+     }
     .button-flat-dark {
         .font-size(20px);
     }
@@ -300,7 +305,7 @@ html[lang^='en'] {
         width: @widthTablet;
 
         h1 {
-            .font-size(45px);
+            .font-size(44px);
         } 
         h2 {
             .font-size(38px);
@@ -312,7 +317,7 @@ html[lang^='en'] {
     }
     .intro {
         header {
-            width: 380px;
+            width: 370px;
         }
         .critter-animation {
            margin: 35px -20px 0 0; 
@@ -382,6 +387,11 @@ html[lang^='en'] {
         }
         .cta h2 {
             width: 100%; 
+        }
+    }
+    html[lang^='pl']{
+        .button-flat-dark {
+            .font-size(16px);
         }
     }
     .button-flat-dark {
