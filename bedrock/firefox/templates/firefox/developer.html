@@ -34,12 +34,7 @@
 
 {% block site_header_share %}
   {% set share_urls = { 'twitter': 'http://mzl.la/1KJ1Yct', 'googleplus': 'http://mzl.la/1FuzQJk', 'facebook': 'http://mzl.la/1zTb4Aw' } -%}
-  {% if l10n_has_tag('share_cta') -%}
-    {% set share_text = _('Design, build and debug the Web without ever leaving your browser with the new Firefox Developer Edition!') %}
-  {%- else -%}
-    {# If the new copy is not localized yet, just use the same text as the existing preamble #}
-    {% set share_text = _('Introducing the only browser made for developers like you.') %}
-  {% endif -%}
+  {% set share_text = _('Design, build and debug the Web without ever leaving your browser with the new Firefox Developer Edition!') %}
   {{ share_cta(_('Share'), share_urls, share_text, 'spread-firefox-developer', 'sky mini') }}
 {% endblock %}
 
@@ -57,14 +52,12 @@
   </h2>
   {{ download_firefox('alpha', icon=False, small=True, simple=True) }}
 
-  {% if l10n_has_tag('new_doorhanger') %}
   <p class="feedback-note">
     {{ _('Firefox Developer Edition automatically sends feedback to Mozilla.') }}
     <a href="{{ url('privacy.notices.firefox') }}#telemetry" class="more">{{ _('Learn more') }}</a>
   </p>
-  {% endif %}
 
-  <img src="{{ static('img/firefox/developer/screenshot.jpg') }}" alt="{{ _('Firefox Developer Edition') }}" class="screenshot" />
+  {{ high_res_img('firefox/developer/challenger-hero.png', {'alt': 'Firefox Developer Edition', 'width': '832', 'height': 'auto', 'class': 'screenshot'}) }}
 
   <ul class="intro-features">
     <li class="intro-feature">

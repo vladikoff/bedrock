@@ -19,11 +19,7 @@
 {% block page_og_url %}{{ url('firefox.developer') }}{% endblock %}
 
 {% block page_og_desc %}
-  {% if l10n_has_tag('meta_update_201503') %}
-    {{_('Built for those who build the Web. Introducing the only browser made for developers.')}}
-  {%- else -%}
-    {{ _('Introducing the only browser made for developers like you.') }}
-  {% endif %}
+  {{_('Built for those who build the Web. Introducing the only browser made for developers.')}}
 {% endblock %}
 
 {% block body_id %}firefox-developer-firstrun{% endblock %}
@@ -37,15 +33,9 @@ data-webide-title="{{ _('Try WebIDE') }}"
 data-webide-text="{{ _('Develop, deploy and debug Firefox OS apps directly in your browser or on a Firefox OS device.') }}"
 data-next-sync="{{ _('Next: Sync') }}"
 
-{% if l10n_has_tag('new_doorhanger') %}
-  data-sync-title="{{ _('Important') }}"
-  data-sync-text="{{ _('Sync your new Developer Edition profile to your Firefox Account to access bookmarks, browsing history, passwords and more from your existing Firefox profile.') }}"
-  data-doorhanger-sync="{{ _('Sync now') }}"
-{% else %}
-  data-sync-title="{{ _('Keep your browser in Sync') }}"
-  data-sync-text="{{ _('Sync your Firefox desktop and mobile browsers to get instant access to your bookmarks, open tabs, passwords and more.') }}"
-  data-doorhanger-sync="{{ _('Sync my Firefox') }}"
-{% endif %}
+data-sync-title="{{ _('Important') }}"
+data-sync-text="{{ _('Sync your new Developer Edition profile to your Firefox Account to access bookmarks, browsing history, passwords and more from your existing Firefox profile.') }}"
+data-doorhanger-sync="{{ _('Sync now') }}"
 
 data-doorhanger-close="{{ _('Close') }}"
 data-doorhanger-nothanks="{{ _('No thanks') }}"
@@ -56,10 +46,8 @@ data-devtools-icon-high-res="{{ static('img/firefox/dev-firstrun/devtools-blue-h
 data-sync-icon="{{ static('img/firefox/dev-firstrun/sync-blue.png') }}"
 data-sync-icon-high-res="{{ static('img/firefox/dev-firstrun/sync-blue-high-res.png') }}"
 
-{% if l10n_has_tag('new_doorhanger') %}
-  data-sync-reminder-title="{{ _('Before you go&hellip;') }}"
-  data-sync-reminder-text="{{ _('If you continue without syncing your new Developer Edition profile, you could lose access to important browsing data from your existing Firefox profile.') }} {{ _('To sync now, choose the Sync option from this menu.') }}"
-{% endif %}
+data-sync-reminder-title="{{ _('Before you go&hellip;') }}"
+data-sync-reminder-text="{{ _('If you continue without syncing your new Developer Edition profile, you could lose access to important browsing data from your existing Firefox profile.') }} {{ _('To sync now, choose the Sync option from this menu.') }}"
 
 {% endblock %}
 
@@ -70,7 +58,7 @@ data-sync-icon-high-res="{{ static('img/firefox/dev-firstrun/sync-blue-high-res.
 
 {% block content %}
 
-<main role="main" {% if l10n_has_tag('new_doorhanger') %}class="sync-reminder"{% endif %} >
+<main role="main" class="sync-reminder">
   <section class="intro container">
     <header>
       <h1>{{_('Welcome to <span>Firefox Developer Edition</span>')}}</h1>
@@ -145,15 +133,13 @@ data-sync-icon-high-res="{{ static('img/firefox/dev-firstrun/sync-blue-high-res.
       </li>
     {% endif %}
     </ul>
-    {% if l10n_has_tag('new_doorhanger') %}
-      <div class="notice">
-        <h4>{{ _('Important: Sync your new profile') }}</h4>
-        <p>
-          {{ _('Developer Edition comes with a new profile so you can run it alongside other versions of Firefox.') }} {{ _('To access your bookmarks, browsing history and more, you need to sync the profile with your existing Firefox Account, or create a new one.') }}
-          <a href="https://support.mozilla.org/kb/recover-lost-bookmarks-firefox-developer-edition" rel="external" class="more">{{ _('Learn more') }}</a>
-        </p>
-      </div>
-    {% endif %}
+    <div class="notice">
+      <h4>{{ _('Important: Sync your new profile') }}</h4>
+      <p>
+        {{ _('Developer Edition comes with a new profile so you can run it alongside other versions of Firefox.') }} {{ _('To access your bookmarks, browsing history and more, you need to sync the profile with your existing Firefox Account, or create a new one.') }}
+        <a href="https://support.mozilla.org/kb/recover-lost-bookmarks-firefox-developer-edition" rel="external" class="more">{{ _('Learn more') }}</a>
+      </p>
+    </div>
   </section>
 
   <section class="more-features">
