@@ -19,11 +19,7 @@
 {% block page_og_url %}{{ url('firefox.developer') }}{% endblock %}
 
 {% block page_og_desc %}
-  {% if l10n_has_tag('meta_update_201503') %}
-    {{_('Built for those who build the Web. Introducing the only browser made for developers.')}}
-  {%- else -%}
-    {{ _('Introducing the only browser made for developers like you.') }}
-  {% endif %}
+  {{_('Built for those who build the Web. Introducing the only browser made for developers.')}}
 {% endblock %}
 
 {% block body_id %}firefox-developer-whatsnew{% endblock %}
@@ -110,15 +106,13 @@
       </li>
     {% endif -%}
     </ul>
-    {% if l10n_has_tag('new_doorhanger') %}
-      <div class="notice">
-        <h4>{{ _('Important: Sync your new profile') }}</h4>
-        <p>
-          {{ _('Developer Edition comes with a new profile so you can run it alongside other versions of Firefox.') }} {{ _('To access your bookmarks, browsing history and more, you need to sync the profile with your existing Firefox Account, or create a new one.') }}
-          <a href="https://support.mozilla.org/kb/recover-lost-bookmarks-firefox-developer-edition" rel="external" class="more">{{ _('Learn more') }}</a>
-        </p>
-      </div>
-    {% endif %}
+    <div class="notice">
+      <h4>{{ _('Important: Sync your new profile') }}</h4>
+      <p>
+        {{ _('Developer Edition comes with a new profile so you can run it alongside other versions of Firefox.') }} {{ _('To access your bookmarks, browsing history and more, you need to sync the profile with your existing Firefox Account, or create a new one.') }}
+        <a href="https://support.mozilla.org/kb/recover-lost-bookmarks-firefox-developer-edition" rel="external" class="more">{{ _('Learn more') }}</a>
+      </p>
+    </div>
   </section>
 </main>
 
