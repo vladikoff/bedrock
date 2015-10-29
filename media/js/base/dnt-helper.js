@@ -30,7 +30,7 @@ function _dntEnabled(dnt, ua) {
 
     if (isIE) {
         // We are only concerned with the platform if this is IE
-        platform = platformRegEx.exec(ua).toString();
+        platform = platformRegEx.exec(ua);
         // With old versions of IE, DNT did not exist so we simply return false;
         if (typeof Array.prototype.indexOf !== 'function') {
             return false;
@@ -40,7 +40,7 @@ function _dntEnabled(dnt, ua) {
     if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
         // Can't say for sure if it is 1 or 0, due to Fx bug 887703
         dntStatus = 'Unspecified';
-    } else if (isIE && platform && anomalousWinVersions.indexOf(platform) !== -1) {
+    } else if (isIE && platform && anomalousWinVersions.indexOf(platform.toString()) !== -1) {
         // default is on, which does not honor the specification
         dntStatus = 'Unspecified';
     } else {
