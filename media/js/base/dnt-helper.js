@@ -26,18 +26,12 @@ function _dntEnabled(dnt, ua) {
     var platformRegEx = /Windows.+?(?=;)/g;
     var ieRegEx = /MSIE|Trident/i;
     var isIE = ieRegEx.test(ua);
-    var platform = '';
+    var platform = platformRegEx.exec(ua);
 
-    if (isIE) {
-        // We are only concerned with the platform if this is IE
-        platform = platformRegEx.exec(ua);
-        // With old versions of IE, DNT did not exist so we simply return false;
-        if (typeof Array.prototype.indexOf !== 'function') {
-            return false;
-        }
-    }
-
-    if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
+    // With old versions of IE, DNT did not exist so we simply return false;
+    if (isIE && typeof Array.prototype.indexOf !== 'function') {
+        return false;
+    } else if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
         // Can't say for sure if it is 1 or 0, due to Fx bug 887703
         dntStatus = 'Unspecified';
     } else if (isIE && platform && anomalousWinVersions.indexOf(platform.toString()) !== -1) {
