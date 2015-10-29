@@ -7,11 +7,14 @@
  * @params {string} [ua] - An optional mock userAgent string to ease unit testing.
  * @returns {boolean} true if enabled else false
  */
-function dntEnabled(dnt, ua) {
+function _dntEnabled(dnt, ua) {
 
     'use strict';
 
-    var dntStatus = dnt || navigator.doNotTrack || navigator.msDoNotTrack;
+    // for old version of IE we need to use the msDoNotTrack property of navigator
+    // on newer versions, and newer platforms, this is doNotTrack but, on the window object
+    // Safari also exposes the property on the window object.
+    var dntStatus = dnt || navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
     var ua = ua || navigator.userAgent;
 
     // List of Windows versions known to not implement DNT according to the standard.
@@ -23,17 +26,24 @@ function dntEnabled(dnt, ua) {
     var platformRegEx = /Windows.+?(?=;)/g;
     var ieRegEx = /MSIE|Trident/i;
     var isIE = ieRegEx.test(ua);
+    var oldIE = false;
     var platform = '';
 
-    // only set platform if this is IE
     if (isIE) {
+        // in IE 8 and below, indexOf on the Array object is undefined
+        oldIE = typeof Array.prototype.indexOf !== 'function';
+        // We are only concerned with the platform if this is IE
         platform = platformRegEx.exec(ua).toString();
+        if (oldIE) {
+            // with old version of IE, DNT did not exist so we simply return false;
+            return false;
+        }
     }
 
     if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
         // Can't say for sure if it is 1 or 0, due to Fx bug 887703
         dntStatus = 'Unspecified';
-    } else if (isIE && $.inArray(platform, anomalousWinVersions) !== -1) {
+    } else if (isIE && !oldIE && anomalousWinVersions.indexOf(platform) !== -1) {
         // default is on, which does not honor the specification
         dntStatus = 'Unspecified';
     } else {
