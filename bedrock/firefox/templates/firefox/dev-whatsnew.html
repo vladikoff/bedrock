@@ -56,7 +56,7 @@
         <p>{{_('Use Developer Edition’s visual animation and CSS editing tools to explore the depths of the ocean and interact with the strangest of creatures.')}}</p>
         <a href="http://devtoolschallenger.com/" rel="external" class="more">{{_('Try DevTools Challenger')}}</a>
       </li>
-    {% elif l10n_has_tag('spring_release') %}
+    {%- else -%}
       <li class="feature{% if not LANG.startswith('en-') %} feature-centered{% endif %}">
         <a href="https://developer.mozilla.org/docs/Tools/Performance" rel="external">
           <img src="{{ static('img/firefox/firstrun/dev/feature-performancetools.png') }}" alt="{{ _('Screenshot') }}" class="screenshot">
@@ -81,7 +81,6 @@
           <a href="https://hacks.mozilla.org/?p=28808" rel="external" class="more">{{_('See how you helped')}}</a>
         </li>
       {% endif %}
-    {%- else -%}
       <li class="feature">
         <a href="https://www.youtube.com/watch?v=1R9_WdXwUsE" class="video-play" rel="external">
           <img src="{{ static('img/firefox/developer/feature-webide.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
@@ -121,7 +120,5 @@
 {% block email_form %}{% endblock %}
 
 {% block js %}
-  {% if not l10n_has_tag('spring_release') %}
-    {% javascript 'firefox_developer_whatsnew' %}
-  {% endif %}
+  {% javascript 'firefox_developer_whatsnew' %}
 {% endblock %}
