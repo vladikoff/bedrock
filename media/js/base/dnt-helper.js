@@ -21,12 +21,11 @@ function _dntEnabled(dnt, ua) {
     var anomalousWinVersions = ['Windows NT 6.1', 'Windows NT 6.2', 'Windows NT 6.3'];
 
     var fxMatch = ua.match(/Firefox\/(\d+)/);
-    // Matches from Windows up to the first occurance of ; un-greedily
-    // http://www.regexr.com/3c2el
-    var platformRegEx = /Windows.+?(?=;)/g;
     var ieRegEx = /MSIE|Trident/i;
     var isIE = ieRegEx.test(ua);
-    var platform = platformRegEx.exec(ua);
+    // Matches from Windows up to the first occurance of ; un-greedily
+    // http://www.regexr.com/3c2el
+    var platform = ua.match(/Windows.+?(?=;)/g);
 
     // With old versions of IE, DNT did not exist so we simply return false;
     if (isIE && typeof Array.prototype.indexOf !== 'function') {
