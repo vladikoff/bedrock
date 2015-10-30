@@ -58,7 +58,7 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
 
 {% block content %}
 
-<main role="main" class="sync-reminder">
+<main role="main">
   <section class="intro container">
     <header>
       <h1>{{_('Welcome to <span>Firefox Developer Edition</span>')}}</h1>
@@ -82,7 +82,7 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
         <p>{{_('Use Developer Edition’s visual animation and CSS editing tools to explore the depths of the ocean and interact with the strangest of creatures.')}}</p>
         <a href="http://devtoolschallenger.com/" rel="external" class="more">{{_('Try DevTools Challenger')}}</a>
       </li>
-    {% elif l10n_has_tag('spring_release') %}
+    {% else %}
       <li class="feature">
         <a href="https://developer.mozilla.org/docs/Tools/Performance" rel="external">
           <img src="{{ static('img/firefox/firstrun/dev/feature-performancetools.png') }}" alt="{{ _('Screenshot') }}" class="screenshot">
@@ -98,18 +98,6 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
         </div>
       </li>
       <li class="feature">
-        <a href="https://www.youtube.com/watch?v=eQqNfkqIJdw" rel="external" class="video-play">
-          <img src="{{ static('img/firefox/firstrun/dev/feature-inspector-large.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
-        </a>
-        <h2>{{_('Page Inspector')}}</h2>
-        <p>{{_('Examine the HTML and CSS of any Web page and easily modify the structure and layout of a page.')}}</p>
-        <a href="https://developer.mozilla.org/docs/Tools/Page_Inspector" rel="external" class="more">{{_('Learn more about Page Inspector')}}</a>
-        <div class="responsive-video-container">
-          <div class="video" data-video-id="eQqNfkqIJdw"></div>
-        </div>
-      </li>
-    {% elif not l10n_has_tag('spring_release') %}
-      <li class="feature">
         <a href="https://www.youtube.com/watch?v=R_qDaLQ8ghg" rel="external" class="video-play">
           <img src="{{ static('img/firefox/firstrun/dev/feature-webaudio-large.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
         </a>
@@ -120,19 +108,9 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
           <div class="video" data-video-id="R_qDaLQ8ghg"></div>
         </div>
       </li>
-      <li class="feature">
-        <a href="https://www.youtube.com/watch?v=eQqNfkqIJdw" rel="external" class="video-play">
-          <img src="{{ static('img/firefox/firstrun/dev/feature-inspector-large.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
-        </a>
-        <h2>{{_('Page Inspector')}}</h2>
-        <p>{{_('Examine the HTML and CSS of any Web page and easily modify the structure and layout of a page.')}}</p>
-        <a href="https://developer.mozilla.org/docs/Tools/Page_Inspector" rel="external" class="more">{{_('Learn more about Page Inspector')}}</a>
-        <div class="responsive-video-container">
-          <div class="video" data-video-id="eQqNfkqIJdw"></div>
-        </div>
-      </li>
     {% endif %}
     </ul>
+
     <div class="notice">
       <h4>{{ _('Important: Sync your new profile') }}</h4>
       <p>
@@ -148,7 +126,6 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
         <h2>{{_('Features and tools')}}</h2>
       </header>
       <ul class="features">
-      {% if l10n_has_tag('spring_release') %}
         <li class="feature">
           <a href="https://www.youtube.com/watch?v=R_qDaLQ8ghg" rel="external" class="video-play">
             <img src="{{ static('img/firefox/firstrun/dev/feature-webaudio.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
@@ -160,7 +137,31 @@ data-sync-reminder-text="{{ _('If you continue without syncing your new Develope
             <div class="video" data-video-id="R_qDaLQ8ghg"></div>
           </div>
         </li>
-      {% endif %}
+        <li class="feature">
+          <a href="https://developer.mozilla.org/docs/Tools/Performance" rel="external">
+            <img src="{{ static('img/firefox/firstrun/dev/performance-tools.png') }}" alt="{{ _('Screenshot') }}" class="screenshot">
+          </a>
+          <h2>{{_('Performance Tools')}}</h2>
+          <p>{{_('Examine your web content’s frame rate, memory consumption and JS profile in a consolidated timeline view to help easily identify and troubleshoot performance bottlenecks.')}}</p>
+          <a href="https://developer.mozilla.org/docs/Tools/Performance" rel="external" class="more">{{_('Learn more about Performance Tools')}}</a>
+          {% if LANG.startswith('en-') %}
+            <br><a href="http://codepen.io/mozhacks/pen/xGgevw?editors=001?utm_source=mozilla.org&amp;utm_medium=referral&amp;utm_campaign=firefox-developer-game&amp;utm_content=firstrun-dev-tour" rel="external" class="more">{{_('Play the game on Codepen')}}</a>
+          {% endif %}
+          <div class="responsive-video-container">
+            <div class="video" data-video-id="eH0R10Ga4Hs"></div>
+          </div>
+        </li>
+        <li class="feature">
+          <a href="https://www.youtube.com/watch?v=eQqNfkqIJdw" rel="external" class="video-play">
+            <img src="{{ static('img/firefox/firstrun/dev/feature-inspector.png') }}" alt="{{ _('Screenshot') }}" class="screenshot">
+          </a>
+          <h2>{{_('Page Inspector')}}</h2>
+          <p>{{_('Examine the HTML and CSS of any Web page and easily modify the structure and layout of a page.')}}</p>
+          <a href="https://developer.mozilla.org/docs/Tools/Page_Inspector" rel="external" class="more">{{_('Learn more about Page Inspector')}}</a>
+          <div class="responsive-video-container">
+            <div class="video" data-video-id="eQqNfkqIJdw"></div>
+          </div>
+        </li>
         <li class="feature">
           <a href="https://www.youtube.com/watch?v=iEDk8o9ehlw" rel="external" class="video-play">
             <img src="{{ static('img/firefox/firstrun/dev/feature-console.jpg') }}" alt="{{ _('Screenshot') }}" class="screenshot">
