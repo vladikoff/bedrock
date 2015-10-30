@@ -21,23 +21,16 @@ function _dntEnabled(dnt, ua) {
     var anomalousWinVersions = ['Windows NT 6.1', 'Windows NT 6.2', 'Windows NT 6.3'];
 
     var fxMatch = ua.match(/Firefox\/(\d+)/);
-    // Matches from Windows up to the first occurance of ; un-greedily
-    // http://www.regexr.com/3c2el
-    var platformRegEx = /Windows.+?(?=;)/g;
     var ieRegEx = /MSIE|Trident/i;
     var isIE = ieRegEx.test(ua);
-    var platform = '';
+    // Matches from Windows up to the first occurance of ; un-greedily
+    // http://www.regexr.com/3c2el
+    var platform = ua.match(/Windows.+?(?=;)/g);
 
-    if (isIE) {
-        // We are only concerned with the platform if this is IE
-        platform = platformRegEx.exec(ua);
-        // With old versions of IE, DNT did not exist so we simply return false;
-        if (typeof Array.prototype.indexOf !== 'function') {
-            return false;
-        }
-    }
-
-    if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
+    // With old versions of IE, DNT did not exist so we simply return false;
+    if (isIE && typeof Array.prototype.indexOf !== 'function') {
+        return false;
+    } else if (fxMatch && parseInt(fxMatch[1], 10) < 32) {
         // Can't say for sure if it is 1 or 0, due to Fx bug 887703
         dntStatus = 'Unspecified';
     } else if (isIE && platform && anomalousWinVersions.indexOf(platform.toString()) !== -1) {
