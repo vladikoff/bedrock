@@ -1,0 +1,287 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../../sandstone/lib.less";
+
+.sand #outer-wrapper {
+    background: none;
+}
+
+.page-head {
+    background-color: #fff;
+    margin-top: 0;
+    padding-top: 5.714em;
+
+    @media only screen and (max-width: @breakTablet) {
+        padding-top: 2em;
+    }
+
+    h2 {
+        text-align: center;
+        line-height: 1.2;
+    }
+}
+
+.page-title {
+    color: @mozillaRed;
+    margin-top: @baseLine * 2;
+    .font-size(72px);
+    text-align: center;
+
+    @media only screen and (max-width: @breakDesktop) {
+        .font-size(56px);
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        .font-size(40px);
+    }
+}
+
+main {
+    h2 {
+        margin: (@baseLine * 3) 0;
+        text-align: center;
+
+        @media only screen and (max-width: @breakTablet) {
+            margin: (@baseLine * 2) 0;
+        }
+    }
+}
+
+.simple,
+.challenging {
+    text-align: center;
+    list-style: none;
+    .clearfix;
+}
+
+.task {
+    position: relative;
+    display: inline-block;
+    margin-left: 0;
+    width: 300px;
+    vertical-align: top;
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: 240px;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        display: block;
+        margin: 0 auto @baseLine;
+        width: 400px;
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        width: 260px;
+    }
+
+    h3 {
+        display: inline-block;
+        .font-size(16px);
+
+        &:before {
+            display: block;
+            content: '';
+            .at2x('/media/img/contribute/signup/tasks-sprite.png', 600px, 600px);
+            background-position: -6px -9px;
+            background-repeat: no-repeat;
+            margin: 0 auto @baseLine;
+            border: 5px solid #d1d2d3;
+            border-radius: 50%;
+            width: 185px;
+            height: 185px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-size: 400px 400px;
+                width: 110px;
+                height: 110px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-size: 600px 600px;
+                width: 185px;
+                height: 185px;
+            }
+        }
+
+        &.fx-mobile:before {
+            background-position: -205px -6px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -147px -5px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -204px -6px;
+            }
+        }
+
+        &.fx-twitter:before {
+            background-position: -408px -5px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -283px -4px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -409px -6px;
+            }
+        }
+
+        &.startmozilla-twitter:before {
+            background-position: -409px -403px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -276px -281px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -408px -403px;
+            }
+        }
+
+        &.coding:before {
+            background-position: -6px -207px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -9px -152px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -5px -208px;
+            }
+        }
+
+        &.fxos:before {
+            background-position: -207px -207px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -145px -145px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -207px -207px;
+            }
+        }
+
+        &.devtools:before {
+            background-position: -408px -206px;
+
+            @media only screen and (max-width: @breakDesktop) {
+                background-position: -286px -145px;
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                background-position: -408px -206px;
+            }
+        }
+    }
+
+    h3:hover:before,
+    h3:focus:before {
+        border-color: #0c99d5;
+    }
+
+    a.outline-button:link,
+    a.outline-button:visited {
+        display: inline-block;
+        color: #0c99d5;
+        margin: 0 auto;
+        padding: @baseLine;
+        border: 2px solid #d1d2d3;
+        border-radius: 8px;
+        width: 160px;
+        line-height: 1.3;
+
+        @media only screen and (max-width: @breakTablet) {
+            width: 320px;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: 180px;
+        }
+    }
+
+    a.outline-button:hover,
+    a.outline-button:focus {
+        border-color: #0c99d5;
+        text-decoration: none;
+    }
+}
+
+.tasks-challenging {
+    padding-bottom: 80px;
+
+    @media only screen and (max-width: @breakTablet) {
+        padding-bottom: 0;
+    }
+}
+
+.tooltip-trigger {
+    display: inline-block;
+    position: relative;
+    top: 23px;
+    width: 25px;
+    height: 25px;
+
+    .info-icon-background {
+        fill: #d1d2d3;
+    }
+
+    .info-icon-txt {
+        fill: #fff;
+    }
+
+    &:hover {
+        .info-icon-background {
+            fill: #909090;
+        }
+    }
+}
+
+.tooltip {
+    position: absolute;
+    background-image: none;
+    background-color: #fff;
+    color: #32333a;
+    padding: 15px 15px 0;
+    border: 2px solid #eee;
+    .open-sans-light;
+    .font-size(14px);
+    line-height: 1.3;
+    text-shadow: none;
+    box-shadow: 6px 2px 12px #E0E0E0;
+    z-index: 2;
+
+    @media only screen and (max-width: @breakTablet) {
+        right: 0;
+    }
+
+    &:after {
+        top: -15px;
+        left: 240px;
+        border-color: #fff transparent;
+        border-width: 0 12px 16px;
+
+        @media only screen and (max-width: @breakDesktop) {
+            left: 207px;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            right: 10px;
+            left: auto;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@media only screen and (max-width: @breakMobile) {
+    #colophon .row {
+        width: 280px;
+    }
+}
