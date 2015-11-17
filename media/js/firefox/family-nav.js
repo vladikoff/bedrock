@@ -85,7 +85,7 @@ if (typeof window.Mozilla === 'undefined') {
             if (mqDesktop) {
                 fxFamillyNavSticky = new Waypoint.Sticky({
                     element: $fxFamilyHeader,
-                    offset: -80
+                    offset: -50
                 });
             }
         };
@@ -120,6 +120,35 @@ if (typeof window.Mozilla === 'undefined') {
                     $('.trigger-dots').addClass('fallback');
                 }
             }
+
+            // default variant to show 'Tools'
+            var fxnvVariant = 1;
+
+            // check for querystring var to set version of tools label
+            var fxnvMatch = /fxnv=[1-3].*?/.exec(window.location.search);
+
+            // was match found in URL?
+            if (fxnvMatch) {
+                fxnvVariant = fxnvMatch[0].split('=')[1];
+
+                // save for future page visits without query param
+                try {
+                    sessionStorage.setItem('fxnv', fxnvVariant);
+                } catch(ex) {}
+            } else {
+                // see if variant is saved in sessionStorage
+                try {
+                    if (sessionStorage.getItem('fxnv')) {
+                        fxnvVariant = sessionStorage.getItem('fxnv');
+                    }
+                } catch(ex) {}
+            }
+
+            _setToolsVariant(fxnvVariant);
+        };
+
+        var _setToolsVariant = function(variant) {
+            $('#tools-label-' + variant).addClass('active');
         };
 
         $tertiaryNavs.on('click', 'a', function() {
