@@ -72,14 +72,14 @@ if (typeof Mozilla === 'undefined') {
                 style: 'text',
             },
             {
-                callback: TPTour.step4,
+                callback: TPTour.maybeCloseTab,
                 label: _step3.buttonText,
                 style: 'primary',
             },
         ];
 
         var options = {
-            closeButtonCallback: TPTour.step4
+            closeButtonCallback: TPTour.maybeCloseTab
         };
 
         Mozilla.UITour.showMenu('controlCenter', function() {
@@ -96,6 +96,22 @@ if (typeof Mozilla === 'undefined') {
 
         TPTour.replaceURLState('3');
         TPTour.state = 'step3';
+    };
+
+    TPTour.maybeCloseTab = function() {
+        var newTab = TPTour.getParameterByName('newtab');
+
+        if (newTab === 'true') {
+            TPTour.closeTab();
+        } else {
+            TPTour.step4();
+        }
+    };
+
+    TPTour.closeTab = function() {
+        setTimeout(TPTour.step4, 400);
+        TPTour.hidePanels();
+        Mozilla.UITour.closeTab();
     };
 
     TPTour.step4 = function() {
