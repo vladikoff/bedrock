@@ -262,7 +262,7 @@ class ContributeTaskView(TemplateView):
         variant = self.request.GET.get('v', 1)
         task = filter(None, self.request.path.split('/'))[-1]
 
-        if variant in ['1', '2'] and task in self.tasks:
+        if variant in [1, 2] and task in self.tasks:
             template = 'mozorg/contribute/tasks/v{0}/{1}.html'.format(variant, task)
         else:
             raise Http404
