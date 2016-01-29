@@ -28,3 +28,7 @@
 {% block thank_you_msg %}
   {{ _('Good to have you join!') }}
 {% endblock %}
+
+{% block try_another %}
+  {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}

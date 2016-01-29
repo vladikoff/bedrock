@@ -49,3 +49,7 @@
 {% block thank_you_msg %}
   {{ _('Thanks for taking the challenge!') }}
 {% endblock %}
+
+{% block try_another %}
+  {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}

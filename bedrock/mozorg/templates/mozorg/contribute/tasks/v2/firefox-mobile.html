@@ -51,3 +51,7 @@
 {% block thank_you_msg %}
   {{ _('Thanks for installing Firefox and telling your friends!') }}
 {% endblock %}
+
+{% block try_another %}
+  {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}

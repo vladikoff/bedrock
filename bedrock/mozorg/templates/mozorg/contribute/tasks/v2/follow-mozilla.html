@@ -36,3 +36,7 @@
 {% block thank_you_msg %}
   {{ _('Thanks for contacting us!') }}
 {% endblock %}
+
+{% block try_another %}
+  {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}

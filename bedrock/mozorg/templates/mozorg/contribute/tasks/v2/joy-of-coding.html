@@ -39,3 +39,7 @@
 {% block thank_you_msg %}
   {{ _('Thanks for watching and adding to the discussion!') }}
 {% endblock %}
+
+{% block try_another %}
+  {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}
