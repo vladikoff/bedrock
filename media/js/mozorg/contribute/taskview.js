@@ -8,7 +8,7 @@ $(function() {
     var $actionButton = $('.action');
     var $downloadButton = $('.download-link');
 
-    var $followButton = $('.follow-mozilla')
+    var $followButton = $('.follow-mozilla');
     var intentURL = $followButton.attr('href');
 
     var $signupTweetForm = $('#signup-tweet');
@@ -70,7 +70,7 @@ $(function() {
      * the task step once the main window receives focus.
      */
     function handleFocusChange($step) {
-        var taskCompleted = false;
+        var taskCompleted;
 
         if (!taskCompleted) {
             // once our original window receives focus again, complete the task.
@@ -96,7 +96,8 @@ $(function() {
     }
 
     /**
-     *
+     * Initializes the tweet form, set's up the character counter and binds
+     * the submit event handler.
      */
     function initTweetForm() {
         var $tweetField = $('#tweet_txt');
@@ -110,7 +111,7 @@ $(function() {
         $tweetField.on('keyup', function() {
             tweetLength = $tweetField.val().length;
             $charCount.text(maxLength - tweetLength);
-        })
+        });
 
         $signupTweetForm.on('submit', function(event) {
             event.preventDefault();

@@ -236,11 +236,12 @@ class ContributeIndex(l10n_utils.LangFilesMixin, TemplateView):
 
 class ContributeSignupNew(TemplateView):
 
+    variant = None
+
     def get_template_names(self):
-        variant = self.request.GET.get('v', '')
         template = 'mozorg/contribute/signup-new.html'
 
-        if variant == '2':
+        if self.variant == '2':
             template = 'mozorg/contribute/signup-alternate.html'
 
         return [template]
@@ -248,15 +249,24 @@ class ContributeSignupNew(TemplateView):
 
 class ContributeTaskView(TemplateView):
 
+    tasks = [
+        'build-firefox',
+        'devtools-challenger',
+        'firefox-mobile',
+        'follow-mozilla',
+        'joy-of-coding',
+        'whimsy',
+    ]
+
     def get_template_names(self):
-        variant = self.request.GET.get('v', '')
+        variant = self.request.GET.get('v', 1)
         task = filter(None, self.request.path.split('/'))[-1]
 
-        # if the variant was not set, this is a v1 variant
-        if not variant:
-            variant = '1'
+        if variant in ['1', '2'] and task in self.tasks:
+            template = 'mozorg/contribute/tasks/v{0}/{1}.html'.format(variant, task)
+        else:
+            raise Http404
 
-        template = 'mozorg/contribute/tasks/v{0}/{1}.html'.format(variant, task)
         return [template]
 
 
@@ -265,19 +275,14 @@ def contribute_signup(request):
     # using the URL parameter v
     variant = request.GET.get('v', '')
 
-    if variant:
-        return ContributeSignupNew.as_view()(request)
-
-    use_new_form = lang_file_has_tag('mozorg/contribute/index',
-                                     l10n_utils.get_locale(request),
-                                     '2015_signup_form')
-    view_class = ContributeSignup if use_new_form else ContributeSignupOldForm
-    return view_class.as_view()(request)
-
-
-def contribute_signup_alternate(request):
-    template_name = 'mozorg/contribute/signup-alternate.html'
-    return l10n_utils.render(request, template_name)
+    if variant in ['1', '2']:
+        return ContributeSignupNew.as_view(variant=variant)(request)
+    else:
+        use_new_form = lang_file_has_tag('mozorg/contribute/index',
+                                         l10n_utils.get_locale(request),
+                                         '2015_signup_form')
+        view_class = ContributeSignup if use_new_form else ContributeSignupOldForm
+        return view_class.as_view()(request)
 
 
 @csrf_exempt
