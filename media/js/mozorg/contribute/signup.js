@@ -1,21 +1,19 @@
-$(function() {
-    var $tooltipTrigger = $('.tooltip-trigger');
-    var $currentItem = {};
-    var $tooltip = {};
+var $tooltipTrigger = $('.tooltip-trigger');
+var $currentItem = {};
+var $tooltip = {};
 
-    $tooltipTrigger.on('mouseenter', function() {
-        $currentItem = $(this).parents('li');
-        $tooltip = $('.tooltip', $currentItem);
+$tooltipTrigger.on('mouseenter', function() {
+    $currentItem = $(this).parents('li');
+    $tooltip = $('.tooltip', $currentItem);
 
-        $tooltip.removeClass('hidden')
-                .attr('aria-hidden', false);
-    });
+    $tooltip.removeClass('hidden')
+            .attr('aria-hidden', false);
+});
 
-    $tooltipTrigger.on('mouseleave', function() {
-        $currentItem = $(this).parents('li');
-        $tooltip = $('.tooltip', $currentItem);
+$tooltipTrigger.on('mouseleave', function() {
+    $currentItem = $(this).parents('li');
+    $tooltip = $('.tooltip', $currentItem);
 
-        $tooltip.addClass('hidden')
-                .attr('aria-hidden', true);
-    });
+    $tooltip.addClass('hidden')
+            .attr('aria-hidden', true);
 });
