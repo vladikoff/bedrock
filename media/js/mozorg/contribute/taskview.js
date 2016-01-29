@@ -21,6 +21,28 @@ $(function() {
     }
 
     /**
+     * Determines the visibilitychange event name based on the current browser
+     * and returns the appropriate keyword. Based on code from:
+     * https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+     */
+    function getVisibilityStateEventKeyword() {
+        // for browser that support the event unprefixed
+        if (typeof document.hidden !== 'undefined') {
+            return 'visibilitychange'
+        }
+
+        // for Chrome 13 and lower
+        if (typeof document.webkitHidden !== 'undefined') {
+            return 'webkitvisibilitychange'
+        }
+
+        // for older versions of IE
+        if (typeof document.msHidden !== 'undefined') {
+            return 'msvisibilitychange'
+        }
+    }
+
+    /**
      * Toggles the completed class on the relevant step, and calls
      * taskComplete() if this was the final step of the task.
      */
@@ -55,12 +77,22 @@ $(function() {
      * proceeds to complete the relevant task step.
      */
     function handleVisibilityChange($step) {
-        $(document).on('visibilitychange.taskview', function() {
+
+        var $document = $(document);
+        var visibilityChange = getVisibilityStateEventKeyword();
+
+        // to be sure we do not queue a bunch of visibilityChange events,
+        // because the browser did not fire the event, and thus `.off`
+        // was never called, we first ensue no events are currently bound,
+        // before binding a new one.
+        $document.off(visibilityChange + '.taskview');
+
+        $document.on(visibilityChange + '.taskview', function() {
             // we wait until our current tab is visible before
             // showing the thank you message.
             if (document.visibilityState === 'visible') {
                 completeStep($step);
-                $(document).off('visibilitychange.taskview');
+                $document.off(visibilityChange + '.taskview');
             }
         });
     }
