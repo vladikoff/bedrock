@@ -1,0 +1,272 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../../sandstone/lib.less";
+
+// Base template overrides
+
+#outer-wrapper {
+    background: @mozIDBlue;
+}
+
+#wrapper {
+    padding: 0;
+}
+
+.container {
+    padding: (@baseLine * 2) 0;
+}
+
+#download-fx-primary,
+#download-fx-secondary {
+    .download-link {
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+    .download-other {
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+    }
+}
+
+#try-hello {
+    text-align: center;
+
+    h1 {
+        .open-sans-extrabold;
+    }
+
+    p {
+        color: #fff;
+    }
+
+    .tagline {
+        .open-sans-light;
+        .font-size(35px);
+        line-height: 1.2;
+    }
+}
+
+#firefox-hello {
+    .try-hello-button,
+    .try-hello-button:link,
+    .try-hello-button:visited {
+        .inline-block;
+        .border-radius(6px);
+        .open-sans-light;
+        text-align: center;
+        padding: 12px (@baseLine * 2);
+        margin-bottom: @baseLine;
+        background: #005189;
+        color: #fff;
+        .font-size(24px);
+        border: none;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            background: lighten(#005189, 3%);
+            color: #fff;
+        }
+    }
+
+    #fxfamilynav-header {
+        .try-hello-button {
+            .font-size(@baseFontSize);
+            padding: 12px @baseLine;
+        }
+    }
+}
+
+#use-cases {
+    position: relative;
+    .clearfix();
+    background: #fff;
+    text-align: center;
+
+    h2, h3 {
+        color: #000;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: (@baseLine * 2) 0 0;
+
+        li {
+            width: (@widthDesktop / 2) - (@gridGutterWidth * 3);
+
+            &.plan {
+                float: left;
+            }
+
+            &.shop {
+                float: right;
+            }
+        }
+    }
+}
+
+#features {
+    position: relative;
+    .clearfix();
+
+    h2 {
+        .open-sans-extrabold;
+    }
+
+    ul li {
+        color: #fff;
+    }
+
+    .split-container {
+        width: 50%;
+        float: left;
+        padding: (@baseLine * 2) 0;
+
+        section {
+            width: (@widthDesktop / 2) - (@gridGutterWidth * 3);
+        }
+    }
+    .quick {
+        background: #00A6E4;
+
+        section {
+            float: right;
+            padding-right: @baseLine * 2;
+        }
+    }
+    .sharing {
+        background: #0083B6;
+
+        section {
+            float: left;
+            padding-left: @baseLine * 2;
+        }
+    }
+
+    a:link,
+    a:visited {
+        color: @textColorSpaceYellow;
+    }
+}
+
+#share-hello {
+    background: #005CA8;
+
+    h2 {
+        float: left;
+        width: 600px;
+        padding-right: @baseLine * 2;
+    }
+
+    .fx-up-to-date {
+        position: relative;
+        .clearfix;
+
+        .try-hello-button {
+            float: right;
+        }
+    }
+
+    .fx-out-of-date {
+        position: relative;
+        .clearfix;
+
+        #download-fx-secondary {
+            float: right;
+        }
+    }
+}
+
+#need-help {
+    color: #000;
+    background: #fff;
+    text-align: right;
+
+    a:link,
+    a:visited {
+        color: @linkBlue;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        color: @linkBlue;
+    }
+}
+
+/*-------------------------------------------------------------------------*/
+// Main page footer links
+
+#footer {
+    background: #fff;
+
+    .container {
+        width: @widthDesktop - (@gridGutterWidth * 2);
+
+        @media only screen and (max-width: @breakDesktop) {
+            width: @widthTablet - @gridGutterWidth;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            width: @widthMobileLandscape - @gridGutterWidth;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: @widthMobile - @gridGutterWidth;
+        }
+    }
+
+    ul {
+        display: inline-block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            color: @linkBlue;
+            .font-size(13px);
+
+            &:after {
+                content: '•';
+                margin: 0 10px;
+            }
+
+            &:last-child:after {
+                content: '';
+                margin: 0;
+            }
+        }
+    }
+
+    a:link,
+    a:visited {
+        color: @linkBlue;
+        .transition(color .1s ease-in-out);
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: darken(@linkBlue, 5%);
+    }
+
+    .logo {
+        display: inline-block;
+        width: 93px;
+        height: 24px;
+        margin-right: @gridGutterWidth;
+        .at2x('/media/img/sandstone/footer-mozilla.png', 93px, 24px);
+        .image-replaced();
+    }
+}
