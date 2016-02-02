@@ -115,9 +115,9 @@ $(function() {
     }
 
     /**
-     * Sends data to GA about the interaction steps a use has taken.
+     * Sends data to GA about the interaction steps a user has taken.
      * @param {string} interaction - The kind of interaction
-     * @param {int} variation - Whether is a v1 or v2 task.
+     * @param {int} variation - Whether it is a v1 or v2 task.
      */
     function trackInteraction(interaction, variation) {
         window.dataLayer.push({
