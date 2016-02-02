@@ -17,3 +17,20 @@ $tooltipTrigger.on('mouseleave', function() {
     $tooltip.addClass('hidden')
             .attr('aria-hidden', true);
 });
+
+/**
+ * Sends data to GA about the interaction steps a use has taken.
+ * @param {string} interaction - The kind of interaction
+ * @param {int} variation - Whether is a v1 or v2 task.
+ */
+function trackInteraction(interaction, variation) {
+    window.dataLayer.push({
+        event: 'get-involved-task-selection',
+        interaction: interaction,
+        variation: variation
+    });
+}
+
+$('.simple, challenging').on('click', 'a', function() {
+    trackInteraction(this.dataset['task'], this.dataset['variant']);
+});
