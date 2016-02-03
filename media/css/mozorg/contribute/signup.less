@@ -81,8 +81,8 @@ main {
         width: 400px;
     }
 
-    @media only screen and (max-width: @breakMobileLandscape) {
-        width: 260px;
+    @media only screen and (max-width: 360px) {
+        width: 280px;
     }
 
     h3 {
@@ -200,7 +200,7 @@ main {
         padding: @baseLine;
         border: 2px solid #d1d2d3;
         border-radius: 8px;
-        width: 160px;
+        width: 150px;
         line-height: 1.3;
     }
 }
@@ -208,11 +208,12 @@ main {
 .tooltip-trigger {
     display: inline-block;
     position: relative;
-    top: 20px;
-    left: -5px;
+    top: -30px;
+    right: 5px;
     background: none;
     border: none;
     width: 35px;
+    height: 35px;
     cursor: pointer;
 
     span {
@@ -241,6 +242,8 @@ main {
 
 .tooltip {
     position: absolute;
+    top: 90px;
+    left: -43px;
     background-image: none;
     background-color: #fff;
     color: #32333a;
@@ -250,27 +253,32 @@ main {
     .font-size(14px);
     line-height: 1.3;
     text-shadow: none;
-    /* box-shadow: 6px 2px 12px #E0E0E0; */
-    box-shadow: 4px 0 11px #E0E0E0;
+    min-height: 90px;
+    box-shadow: 2px 2px 6px #E0E0E0;
     z-index: 2;
 
+    @media only screen and (max-width: @breakDesktop) {
+        top: 15px;
+        left: -72px;
+    }
+
     @media only screen and (max-width: @breakTablet) {
-        right: 0;
+        top: 90px;
+        left: 10px;
+    }
+
+    @media only screen and (max-width: 360px) {
+        left: 0;
+        max-width: 280px;
     }
 
     &:after {
-        top: -15px;
-        left: 240px;
+        right: 10px;
+        left: auto;
         border-color: #fff transparent;
-        border-width: 0 12px 16px;
 
-        @media only screen and (max-width: @breakDesktop) {
-            left: 207px;
-        }
-
-        @media only screen and (max-width: @breakTablet) {
-            right: 10px;
-            left: auto;
+        @media only screen and (max-width: 360px) {
+            right: 32px;
         }
     }
 }

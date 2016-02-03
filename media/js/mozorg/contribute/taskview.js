@@ -164,15 +164,13 @@ $(function() {
      * Handles completion of Whimsy interaction steps.
      */
     function whimsy(event) {
-        // in step 1 we receive an event object that is part of a postMessage,
-        // and confirm that the action is install
-        if (event.data && event.data.action === 'install') {
-            completeStep($this);
+
+        var $this = $(event.target);
+
+        if ($this.data('action') === 'install') {
+            handleVisibilityChange($this);
             trackInteraction('install whimsy', $this.data('variation'));
-        // in step 2 we get an event object that is triggered via a link element.
-        // In this case, the action is read from a data attribute
-        } else if (event.target.dataset['action'] === 'rate') {
-            var $this = $(event.target);
+        } else if ($this.data('action') === 'rate') {
             handleVisibilityChange($this);
             trackInteraction('AMO exit link', $this.data('variation'));
         }
@@ -274,14 +272,6 @@ $(function() {
     if ($signupTweetForm.length > 0) {
         initTweetForm();
     }
-
-    // The Whimsy addon install button lives on AMO and communicates with our page via a
-    // postMessage so, we have this special case event listener to respond to install events..
-    window.addEventListener('message', function(event) {
-        if ((event.data.action === 'install') && (event.data.addon === 'whimsy')) {
-            whimsy(event);
-        }
-    });
 
     $taskSteps.on('click', function(event) {
 
