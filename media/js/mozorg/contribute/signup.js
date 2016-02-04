@@ -31,6 +31,6 @@ function trackInteraction(interaction, variation) {
     });
 }
 
-$('.simple, challenging').on('click', 'a', function() {
+$('.simple, .challenging').on('click', 'a', function() {
     trackInteraction(this.dataset['task'], this.dataset['variant']);
 });
