@@ -394,7 +394,140 @@ html[lang="de"] #newsletter-form input[type="submit"] {
 }
 
 .newsletter-container-variant {
+    background-color: #00a5e1;
+    color: #fff;
     margin-bottom: 30px;
+    padding: @baseLine * 2;
+    border-radius: 0;
+
+    &:before {
+        display: inline-block;
+        content: '';
+        .at2x('/media/img/plugincheck/newsletter.png', 149px, 149px);
+        background-repeat: no-repeat;
+        padding: 10px;
+        width: 149px;
+        height: 149px;
+
+        @media only screen and (max-width: @breakDesktop) {
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            display: none;
+        }
+    }
+
+    header,
+    #newsletter-form {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 0;
+        width: 350px;
+        vertical-align: top;
+
+        @media only screen and (max-width: @breakDesktop) {
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: 240px;
+        }
+    }
+
+    #newsletter-form {
+        .form-contents,
+        .form-submit {
+            display: block;
+            width: 100%;
+        }
+
+        a {
+            color: #fff;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: #fff;
+            }
+        }
+
+        input[type="email"] {
+            width: 94%;
+            border-radius: 3px;
+
+            @media only screen and (max-width: @breakMobileLandscape) {
+                width: 90%;
+            }
+        }
+
+        input[type="submit"] {
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 3px;
+
+            &:hover,
+            &:focus {
+                background-color: transparent;
+            }
+        }
+    }
+
+    h3,
+    h4 {
+        color: #fff;
+        text-shadow: none;
+
+        @media only screen and (max-width: @breakDesktop) {
+            text-align: center;
+        }
+    }
+
+    h3 {
+        .font-size(3.5rem);
+        line-height: .7;
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            .font-size(2.5rem);
+        }
+
+        .firefox {
+            font-weight: bold;
+        }
+    }
+
+    h4 {
+        .font-size(2rem);
+        line-height: 1.2;
+        letter-spacing: 0;
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            .font-size(1.5rem);
+        }
+    }
+
+    .form-title {
+        .visually-hidden;
+    }
+
+    .thank {
+        text-align: center;
+
+        h3 {
+            .font-size(3rem);
+            line-height: 1.1;
+
+            @media only screen and (max-width: @breakMobileLandscape) {
+                .font-size(2rem);
+            }
+
+            @media only screen and (max-width: 360px) {
+                .font-size(1.5rem);
+            }
+        }
+    }
 }
 
 .newsletter-form.thank {
