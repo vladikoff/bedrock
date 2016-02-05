@@ -14,7 +14,7 @@
 {% block task_content %}
   <section class="get-firefox">
     <p>{{ _('Dev Tools requires Firefox Developer Edition desktop browser. To try this task, download Firefox Developer Edition first.') }}</p>
-    <a href="{{ url('firefox.developer') }}" class="button-blue dev-edition">{{ _('Download Firefox Dev Edition') }}</a>
+    <a href="{{ url('firefox.developer') }}" class="button-blue dev-edition" data-variation="2">{{ _('Download Firefox Dev Edition') }}</a>
   </section>
 
   <ol class="task-steps">
@@ -52,4 +52,12 @@
 
 {% block try_another %}
   {{ url('mozorg.contribute.signup') }}?v=2
+{% endblock %}
+
+{% block pick_task_variation %}
+  data-variation="2"
+{% endblock %}
+
+{% block task_variation %}
+  data-variation="2"
 {% endblock %}

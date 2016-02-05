@@ -15,7 +15,7 @@
 
 {% block alt_header %}
   <h1>{{ _('Mozilla Participation Tasks') }}</h1>
-  <a href="{% block more_tasks %}{{ url('mozorg.contribute.signup') }}?v=1{% endblock %}" class="back">{{ _('I want to pick a different task.' )}}</a>
+  <a href="{% block more_tasks %}{{ url('mozorg.contribute.signup') }}?v=1{% endblock %}" class="try-another back" {% block pick_task_variation %}data-variation="1"{% endblock %}>{{ _('I want to pick a different task.' )}}</a>
 {% endblock %}
 
 {% block content %}
@@ -34,7 +34,7 @@
       <header>
         <h3>{% block thank_you_msg %}{% endblock %}</h3>
       </header>
-      <p><a href="{% block try_another %}{{ url('mozorg.contribute.signup') }}?v=1{% endblock %}">{{ _('Try another task?') }}</a></p>
+      <p><a href="{% block try_another %}{{ url('mozorg.contribute.signup') }}?v=1{% endblock %}" class="try-another" {% block task_variation %}data-variation="1"{% endblock %}>{{ _('Try another task?') }}</a></p>
     </section>
   {% endblock %}
 

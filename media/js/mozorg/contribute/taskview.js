@@ -12,6 +12,8 @@ $(function() {
     var intentURL = $followButton.attr('href');
 
     var $signupTweetForm = $('#signup-tweet');
+    var $downloadDevTools = $('.dev-edition');
+    var $tryAnotherTask = $('.try-another');
 
     // some tasks, like installing Whimsy, required the user to be using Firefox
     if ($getFirefox.length > -1 && !Mozilla.Client.isFirefox) {
@@ -184,7 +186,6 @@ $(function() {
 
         if ($this.data('action') === 'install') {
             handleVisibilityChange($this);
-            trackInteraction('install ' + $this.data('mobileversion'), $this.data('variation'));
         }
     }
 
@@ -194,12 +195,13 @@ $(function() {
     function followMozilla(event) {
         var $this = $(event.target);
         var intentURL = $this.attr('href');
+        var screenName = intentURL.substr(intentURL.indexOf('=') + 1);
 
         if ($this.data('action') === 'follow') {
             event.preventDefault();
             window.open(intentURL, 'twitter', 'width=550,height=480,scrollbars');
             handleFocusChange($this);
-            trackInteraction('follow startmozilla', $this.data('variation'));
+            trackInteraction('follow ' + screenName, $this.data('variation'));
         }
     }
 
@@ -249,10 +251,16 @@ $(function() {
      */
     function startFoxFooding(event) {
         var $this = $(event.target);
+        var intentURL = $this.attr('href');
 
         if ($this.data('action') === 'join') {
             handleVisibilityChange($this);
             trackInteraction('foxfooding exit link', $this.data('variation'));
+        } else if ($this.data('action') === 'follow') {
+            event.preventDefault();
+            window.open(intentURL, 'twitter', 'width=550,height=480,scrollbars');
+            handleFocusChange($this);
+            trackInteraction('Follow foxfooding on Twiiter', $this.data('variation'));
         }
     }
 
@@ -268,10 +276,23 @@ $(function() {
         }
     }
 
+    // send GA events for clicks on the dev edition download button
+    if ($downloadDevTools.length > 0) {
+        $downloadDevTools.on('click', function() {
+            trackInteraction('download firefox dev edition', $downloadDevTools.data('variation'));
+        });
+    }
+
     // only bind the handler when the form exists
     if ($signupTweetForm.length > 0) {
         initTweetForm();
     }
+
+    // send GA events for clicks on the back and try another task links
+    $tryAnotherTask.on('click', function(event) {
+        var $this = $(this);
+        trackInteraction($this.text(), $this.data('variation'));
+    });
 
     $taskSteps.on('click', function(event) {
 
@@ -292,5 +313,4 @@ $(function() {
             learnDevTools(event);
         }
     });
-
 });
