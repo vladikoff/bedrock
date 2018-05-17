@@ -1327,6 +1327,7 @@ CSP_DEFAULT_SRC = (
     '*.mozilla.net',
     '*.mozilla.org',
     '*.mozilla.com',
+    '127.0.0.1:3030'
 )
 CSP_IMG_SRC = CSP_DEFAULT_SRC + (
     'data:',

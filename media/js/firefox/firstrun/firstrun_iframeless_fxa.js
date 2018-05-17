@@ -65,4 +65,23 @@
         }
     };
 
+    fetch('http://127.0.0.1:3030/metrics-flow').then((resp) => {
+        return resp.json();
+    }).then((r) => {
+        console.log(r);
+        /**
+        This returns:
+
+        {
+            flowBeginTime: 1526576753262,
+            flowBeginTime: "9b8b128bbe0fc61b38d0938034db70d89fa27d03a5040bb9e232b479a4cd8a03",
+        }
+        */
+
+        $('[name="flow_id"]').val(r.flowId);
+        $('[name="flow_begin_time"]').val(r.flowBeginTime);
+    }).catch((e) => {
+        console.log('fxa error', e);
+    })
+
 })(window.Mozilla);
